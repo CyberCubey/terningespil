@@ -1,5 +1,6 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
+import { Header } from './components/Header';
 
 function App() {
   const [score, setScore] = useState([0, 0]);
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <>
-      <h1>Her kommer en fed app</h1>
+      <Header text={"Spille Bonanza"}></Header>
       <img src="./dice-six-faces-5.svg" style={{ height: '200px' }} alt="" />
       <p>{score[0]}</p>
       <p>{score[1]}</p>
