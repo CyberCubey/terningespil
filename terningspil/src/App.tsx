@@ -1,5 +1,6 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
+import { Header } from './components/Header';
 import { Spillestate } from './components/gamephase';
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <>
-      <h1>Her kommer en fed app</h1>
+      <Header text={"Spille Bonanza"}></Header>
       <Spillestate gamePhase={gamePhase} player={player} />
       <img src="./dice-six-faces-5.svg" style={{ height: '200px' }} alt="" />
       <p>{score[0]}</p>
