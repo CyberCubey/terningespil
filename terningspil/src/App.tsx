@@ -6,9 +6,10 @@ import PlayerScore from './components/Playerscore';
 import { Button } from './components/button';
 function App() {
   const [score, setScore] = useState([0, 0]);
-  const [gamePhase, setGamePhase] = useState('roll');
-  const [guess, setGuess] = useState('');
+  const [gamePhase, setGamePhase] = useState('rul');
+  const [guess, setGuess] = useState('over');
   const [player, setPlayer] = useState(0);
+  const [startingPlayer, setStartingPlayer] = useState(0);
   const [systemMessage, setSystemMessage] = useState('');
 
   const handleRoll = () => {
@@ -27,6 +28,7 @@ function App() {
     });
 
     setPlayer((prevPlayer) => (prevPlayer === 0 ? 1 : 0));
+    setGamePhase('Gæt');
   };
 
   function handleGuess(guess) {
@@ -57,6 +59,18 @@ function App() {
     setGamePhase('Game over');
   }
 
+  function resetgame() {
+    const nextStarter = startingPlayer === 0 ? 1 : 0;
+    setStartingPlayer(nextStarter);
+    setPlayer(nextStarter);
+    setScore([0, 0]);
+    setGuess('over'); // or '' if you prefer
+    setSystemMessage('');
+    setGamePhase('rul');
+
+    console.log('score:', score, 'player:', player);
+  }
+
   useEffect(() => {
     if (score.indexOf(0) > -1) return;
     checkWin(player);
@@ -76,8 +90,9 @@ function App() {
       <p>{score[0]}</p>
       <p>{score[1]}</p>
       <p>Player {player + 1}</p>
-      <Button onclick={handleRoll} navn={'Rul'} />
-      {gamePhase === 'guess' && (
+      {gamePhase === 'rul' && <Button onclick={handleRoll} navn={'rul'} />}
+      {gamePhase === 'Game over' && <Button onclick={resetgame} navn="Nyt spil"></Button>}
+      {gamePhase === 'Gæt' && (
         <div>
           <button onClick={() => handleGuess('over')}>Over</button>
           <button onClick={() => handleGuess('under')}>Under</button>
