@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Spillestate } from './components/gamephase';
 import PlayerScore from './components/Playerscore';
-
+import { Button } from './components/button';
 function App() {
   const [score, setScore] = useState([0, 0]);
   const [gamePhase, setGamePhase] = useState('roll');
@@ -76,7 +76,7 @@ function App() {
       <p>{score[0]}</p>
       <p>{score[1]}</p>
       <p>Player {player + 1}</p>
-      <button onClick={handleRoll}>roll</button>
+      <Button onclick={handleRoll} navn={'Rul'} />
       {gamePhase === 'guess' && (
         <div>
           <button onClick={() => handleGuess('over')}>Over</button>
