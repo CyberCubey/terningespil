@@ -9,5 +9,6 @@ const Button: React.FC<ButtonProps> = ({ navn, onclick }) => {
 </button>
 );};
 
+//Jonathan, 15/01/2026, note = unsure about my repo, might cause conflicts
 export default Button;
 
