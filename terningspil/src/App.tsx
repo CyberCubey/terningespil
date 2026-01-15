@@ -1,6 +1,7 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { Spillestate } from './components/gamephase';
+import PlayerScore from './components/Playerscore';
 
 function App() {
   const [score, setScore] = useState([0, 0]);
@@ -43,6 +44,7 @@ function App() {
     <>
       <h1>Her kommer en fed app</h1>
       <Spillestate gamePhase={gamePhase} player={player} />
+      <PlayerScore score={score} />
       <img src="./dice-six-faces-5.svg" style={{ height: '200px' }} alt="" />
       <p>{score[0]}</p>
       <p>{score[1]}</p>
