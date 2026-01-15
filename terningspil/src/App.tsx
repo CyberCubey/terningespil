@@ -1,6 +1,7 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
+import { Spillestate } from './components/gamephase';
 
 function App() {
   const [score, setScore] = useState([0, 0]);
@@ -42,6 +43,7 @@ function App() {
   return (
     <>
       <Header text={"Spille Bonanza"}></Header>
+      <Spillestate gamePhase={gamePhase} player={player} />
       <img src="./dice-six-faces-5.svg" style={{ height: '200px' }} alt="" />
       <p>{score[0]}</p>
       <p>{score[1]}</p>
