@@ -4,7 +4,7 @@ type PlayerScoreProps = {
   score: number[];
 };
 
-function PlayerScore({ score }: PlayerScoreProps) {
+export function PlayerScore({ score }: PlayerScoreProps) {
   return (
     <div className={style.playerScoreStyle}>
       <h3>Player Scores</h3>
@@ -18,5 +18,3 @@ function PlayerScore({ score }: PlayerScoreProps) {
     </div>
   );
 }
-
-export default PlayerScore;

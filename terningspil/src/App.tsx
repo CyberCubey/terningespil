@@ -2,7 +2,7 @@ import './App.scss';
 import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Spillestate } from './components/Spillestate';
-import PlayerScore from './components/Playerscore';
+import { PlayerScore } from './components/Playerscore';
 import { Button } from './components/button';
 import { GuessWrapper } from './components/GuessWrapper';
 

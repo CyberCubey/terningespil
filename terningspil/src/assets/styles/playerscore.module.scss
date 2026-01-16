@@ -1,7 +1,10 @@
+$shadowVal: 2px 2px 2px white;
+
 .playerScoreStyle {
   h3 {
     font-family: poppins;
     font-size: 3rem;
+    text-shadow: $shadowVal;
   }
 
   div {
@@ -10,5 +13,6 @@
     justify-content: center;
     gap: 1.5rem;
     font-size: 2.5rem;
+    text-shadow: $shadowVal;
   }
 }
