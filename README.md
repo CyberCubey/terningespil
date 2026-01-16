@@ -16,3 +16,5 @@ I er et hold udviklerer der arbejder i et Online Casino Gaming bureau. I skal i 
 God arbejdslyst!
 
 13/01/2025 to 15/01/2025
+
+Dice images licensed from [Delapouite](https://delapouite.com/) under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
