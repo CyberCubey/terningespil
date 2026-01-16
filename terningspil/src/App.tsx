@@ -9,12 +9,14 @@ function App() {
   const [score, setScore] = useState([0, 0]);
   const [gamePhase, setGamePhase] = useState('rul');
   const [guess, setGuess] = useState('over');
+  const [lastRoll, setLastRoll] = useState(1);
   const [player, setPlayer] = useState(0);
   const [startingPlayer, setStartingPlayer] = useState(0);
   const [systemMessage, setSystemMessage] = useState('');
 
   const handleRoll = () => {
     const roll = Math.floor(Math.random() * 6 + 1);
+    setLastRoll(roll);
     console.log(roll);
     setScore((prevScore) => {
       const activePlayer = player;
@@ -87,7 +89,11 @@ function App() {
       <Header text={'Spille Bonanza'}></Header>
       <Spillestate gamePhase={gamePhase} player={player} />
       <PlayerScore score={score} />
-      <img src="./dice-six-faces-5.svg" style={{ height: '200px' }} alt="" />
+      <img
+        src={lastRoll ? `/dice-six-faces-${lastRoll}.svg` : '/dice-placeholder.svg'}
+        style={{ height: '200px' }}
+        alt=""
+      />
       <p>{score[0]}</p>
       <p>{score[1]}</p>
       <p>Player {player + 1}</p>
