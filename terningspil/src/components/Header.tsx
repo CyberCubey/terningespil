@@ -1,8 +1,7 @@
-export function Header ({text}) {
+interface HeaderProps {
+  text: string;
+}
 
-    return(
-        
-        <h1>{text}</h1>
-
-    )
+export function Header({ text }: HeaderProps) {
+  return <h1>{text}</h1>;
 }

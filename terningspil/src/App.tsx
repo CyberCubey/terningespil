@@ -1,9 +1,10 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
-import { Spillestate } from './components/gamephase';
+import { Spillestate } from './components/Spillestate';
 import PlayerScore from './components/Playerscore';
 import { Button } from './components/button';
+
 function App() {
   const [score, setScore] = useState([0, 0]);
   const [gamePhase, setGamePhase] = useState('rul');
@@ -64,7 +65,7 @@ function App() {
     setStartingPlayer(nextStarter);
     setPlayer(nextStarter);
     setScore([0, 0]);
-    setGuess('over'); // or '' if you prefer
+    setGuess('');
     setSystemMessage('');
     setGamePhase('rul');
 
@@ -74,9 +75,6 @@ function App() {
   useEffect(() => {
     if (score.indexOf(0) > -1) return;
     checkWin(player);
-
-    console.log(score);
-    console.log(player, 'player <---');
   }, [score, player]);
 
   //todo: COMPONENTS og gamechange
