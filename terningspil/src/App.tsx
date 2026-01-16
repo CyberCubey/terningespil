@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Spillestate } from './components/Spillestate';
 import PlayerScore from './components/Playerscore';
 import { Button } from './components/button';
+import { GuessWrapper } from './components/GuessWrapper';
 
 function App() {
   const [score, setScore] = useState([0, 0]);
@@ -40,7 +41,6 @@ function App() {
   }
 
   function checkWin(player: number) {
-    //check hvad overunder er på og alt efter hvad den er så sammenlign dem ved at checke hvem der er den aktive gætter(kan kigges ved at se på player variablen og så lægge 1 til) og vis en `Spiller ${player+1} vandt/tabte`
     console.log('still checking wins');
     console.log('player =', player);
     const opponent = player === 0 ? 1 : 0;
@@ -57,8 +57,7 @@ function App() {
     const guessedCorrect = guess === 'over' ? playerRolledHigher : !playerRolledHigher;
     const winner = guessedCorrect ? player : opponent;
 
-    console.log(`spiller ${winner + 1} vandt`);
-    setSystemMessage(`spiller ${winner + 1} vandt`);
+    setSystemMessage(`Spiller ${winner + 1} vandt`);
     setGamePhase('Game over');
   }
 
@@ -86,24 +85,21 @@ function App() {
 
   return (
     <>
-      <Header text={'Spille Bonanza'}></Header>
-      <Spillestate gamePhase={gamePhase} player={player} />
+      <Header text={systemMessage != '' ? systemMessage : 'Spille Bonanza'}></Header>
       <PlayerScore score={score} />
       <img
         src={lastRoll ? `/dice-six-faces-${lastRoll}.svg` : '/dice-placeholder.svg'}
         style={{ height: '200px' }}
         alt=""
       />
-      <p>{score[0]}</p>
-      <p>{score[1]}</p>
-      <p>Player {player + 1}</p>
-      {gamePhase === 'rul' && <Button onclick={handleRoll} navn={'rul'} />}
+      <Spillestate gamePhase={gamePhase} player={player} />
+      {gamePhase === 'rul' && <Button onclick={handleRoll} navn={'Rul'} />}
       {gamePhase === 'Game over' && <Button onclick={resetgame} navn="Nyt spil"></Button>}
       {gamePhase === 'Gæt' && (
-        <div>
-          <button onClick={() => handleGuess('over')}>Over</button>
-          <button onClick={() => handleGuess('under')}>Under</button>
-        </div>
+        <GuessWrapper>
+          <Button navn="Over" onclick={() => handleGuess('over')} />
+          <Button navn="Under" onclick={() => handleGuess('under')} />
+        </GuessWrapper>
       )}
     </>
   );
