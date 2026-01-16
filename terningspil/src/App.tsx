@@ -65,7 +65,7 @@ function App() {
     setStartingPlayer(nextStarter);
     setPlayer(nextStarter);
     setScore([0, 0]);
-    setGuess('');
+    setGuess('over');
     setSystemMessage('');
     setGamePhase('rul');
 
@@ -75,6 +75,9 @@ function App() {
   useEffect(() => {
     if (score.indexOf(0) > -1) return;
     checkWin(player);
+
+    console.log(score);
+    console.log(player, 'player <---');
   }, [score, player]);
 
   //todo: COMPONENTS og gamechange
