@@ -1,7 +1,7 @@
 :root {
-  --trop-bg-1: #ffb347; /* soft orange */
-  --trop-bg-2: #ff7eb3; /* pink */
-  --trop-accent: #00d2ff; /* bright cyan */
+  --trop-bg-1: #ffb347;
+  --trop-bg-2: #ff7eb3;
+  --trop-accent: #00d2ff;
   --trop-shadow: rgba(0, 0, 0, 0.15);
   --trop-radius: 14px;
 }
@@ -39,51 +39,9 @@
   min-width: 140px;
 }
 
-/* subtle leaf gloss */
-.button::after {
-  content: '';
-  position: absolute;
-  left: -20%;
-  top: -40%;
-  width: 60%;
-  height: 180%;
-  background: radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 40%);
-  transform: rotate(-25deg);
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-/* Hover, active, focus */
 .button:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18), 0 6px 14px rgba(0, 0, 0, 0.08);
   filter: saturate(1.05);
   animation: sway 1400ms ease-in-out infinite;
-}
-
-.button:active {
-  transform: translateY(-1px) scale(0.995);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
-  animation: none;
-}
-
-/* Accessible focus */
-.button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.14), 0 12px 26px rgba(0, 0, 0, 0.18);
-}
-
-/* A smaller variant if you want */
-.small {
-  padding: 0.45rem 0.9rem;
-  font-size: 0.85rem;
-  min-width: 96px;
-}
-
-/* Disabled state */
-.button[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  animation: none;
 }

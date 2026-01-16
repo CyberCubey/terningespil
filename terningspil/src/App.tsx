@@ -15,24 +15,26 @@ function App() {
   const [startingPlayer, setStartingPlayer] = useState(0);
   const [systemMessage, setSystemMessage] = useState('');
 
+  function rollDice() {
+    return Math.floor(Math.random() * 6 + 1);
+  }
+
   const handleRoll = () => {
-    const roll = Math.floor(Math.random() * 6 + 1);
+    const roll = rollDice();
     setLastRoll(roll);
-    console.log(roll);
-    setScore((prevScore) => {
-      const activePlayer = player;
-      const copy = [...prevScore];
-      copy[activePlayer] = roll;
 
-      // if (copy.indexOf(0) === -1) {
-      //   checkWin(activePlayer);
-      // }
+    const newScore = [...score];
+    const activePlayer = player;
+    newScore[activePlayer] = roll;
 
-      return copy;
-    });
+    setScore(newScore);
 
-    setPlayer((prevPlayer) => (prevPlayer === 0 ? 1 : 0));
-    setGamePhase('Gæt');
+    if (newScore.indexOf(0) === -1) {
+      checkWin(activePlayer, newScore);
+    } else {
+      setPlayer((prevPlayer) => (prevPlayer === 0 ? 1 : 0));
+      setGamePhase('Gæt');
+    }
   };
 
   function handleGuess(guess) {
@@ -40,16 +42,14 @@ function App() {
     setGamePhase('rul');
   }
 
-  function checkWin(player: number) {
-    console.log('still checking wins');
-    console.log('player =', player);
+  function checkWin(player: number, scores: number[]) {
     const opponent = player === 0 ? 1 : 0;
-    const playerRoll = score[player];
-    const oppoRoll = score[opponent];
+    const playerRoll = scores[player];
+    const oppoRoll = scores[opponent];
+
     if (playerRoll === oppoRoll) {
       setSystemMessage('Uafgjort!');
       setGamePhase('Game over');
-
       return;
     }
 
@@ -75,7 +75,6 @@ function App() {
 
   useEffect(() => {
     if (score.indexOf(0) > -1) return;
-    checkWin(player);
 
     console.log(score);
     console.log(player, 'player <---');
